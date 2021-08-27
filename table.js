@@ -4,7 +4,7 @@ import { DataTable } from 'react-native-paper';
 
 const optionsPerPage = [2, 3, 4];
 
-export default function Table({ data }) {
+export default function Table({ data, navigation }) {
 
   const [page, setPage] = React.useState(0);
   const [itemsPerPage, setItemsPerPage] = React.useState(optionsPerPage[0]);
@@ -15,7 +15,7 @@ export default function Table({ data }) {
 
   return (
     <View style={styles.view}>
-    
+
       <DataTable>
 
         <DataTable.Header>
