@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, TouchableOpacity } from 'react-native';
 import { DataTable } from 'react-native-paper';
 
 const optionsPerPage = [2, 3, 4];
@@ -15,6 +15,7 @@ export default function Table({ data }) {
 
   return (
     <View style={styles.view}>
+    
       <DataTable>
 
         <DataTable.Header>
@@ -24,11 +25,18 @@ export default function Table({ data }) {
         </DataTable.Header>
 
         { data.map(item => (
-            <DataTable.Row>
-                <DataTable.Cell>{item.name}</DataTable.Cell>
-                <DataTable.Cell>{item.occupation}</DataTable.Cell>
-                <DataTable.Cell>{item.contact}</DataTable.Cell>
-            </DataTable.Row>
+
+            <TouchableOpacity onPress={() => navigation.navigate('Details', {
+              'reading': item.meterReadings })}>
+
+              <DataTable.Row>
+                  <DataTable.Cell>{item.name}</DataTable.Cell>
+                  <DataTable.Cell>{item.occupation}</DataTable.Cell>
+                  <DataTable.Cell>{item.contact}</DataTable.Cell>
+              </DataTable.Row>
+              
+            </TouchableOpacity>
+        
         )) }
 
       </DataTable>
